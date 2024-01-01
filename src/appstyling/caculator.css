@@ -16,11 +16,13 @@
     
  }
  .topOutput{
+   display: flex;
+   justify-content: flex-end;
     color: rgba(240, 178, 8, 0.856);
  }
  .bottomOutput{
    display: flex;
-   justify-content: end;
+   justify-content: flex-end;
    font-size: 20px;
    font-family: 'Orbitron', sans-serif;
    font-family: 'Quicksand', sans-serif;
@@ -38,7 +40,7 @@
     width: 100%;
     background-color:black;
     display: flex;
-    justify-content:end;
+    justify-content:flex-end;
  }
  .buttonBox{
     display: flex;
