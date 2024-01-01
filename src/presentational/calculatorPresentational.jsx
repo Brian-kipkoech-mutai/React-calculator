@@ -65,11 +65,11 @@ const CalculatorUi=({handleAcClick,handleAssignmentClick,handleNumberClick,handl
             >2</div>
             <div className="numbers">
                  <div  className="numbers" style={{height:"50%" ,borderTopStyle:"none", borderLeft:"none"}}
-                 onClick={()=>handleNumberClick(6)}
+                 onClick={()=>handleNumberClick(3)}
                  >3</div>
                 <div  className="numbers" style={{height:"50%" ,borderTopStyle:"none", borderLeft:"none"}}
                 
-                onClick={()=>handleAssignmentClick('.')}
+                onClick={()=>handleNumberClick('.')}
                 >.</div>
             </div>
             <div className="buttons" style={{backgroundColor:'rgb(78, 78, 235)'}}

@@ -14,14 +14,14 @@ const inputReducer=( state=defaultState,action)=>{
         
         case INPUT:
             let newInput = [...state.input];
-          
+           
             if (action.payload === '*' || action.payload === '/') {
               const lastChar = newInput.length > 0 ? newInput[newInput.length - 1] : '';
               if((action.payload==='*'||action.payload==='/')&&(newInput[newInput.length - 1]==='-'||newInput[newInput.length - 1]==='+')
               
               &&(newInput[newInput.length - 2]==='/'||newInput[newInput.length - 2]==='*')
               ){
-                 return state
+                 return {...state}
               }
               if(action.payload==='*'&& newInput[newInput.length-1]==='/'){
                 newInput[newInput.length - 1] = action.payload;
@@ -46,7 +46,13 @@ const inputReducer=( state=defaultState,action)=>{
                 newInput.pop(); 
               }
               newInput.push(action.payload);
-            } else if (!isNaN(action.payload)) {
+
+            }
+            else if(action.payload==='.'){
+              newInput.push(action.payload)
+            }
+            
+            else if (!isNaN(action.payload)) {
               newInput.push(action.payload); 
             }
           
