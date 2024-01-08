@@ -1,21 +1,22 @@
 import { connect } from "react-redux"
 import CalculatorUi from "../presentational/calculatorPresentational"
-import inputAction from "../redux/action/inputAction"
 import clearAction from "../redux/action/clearAction";
 import evaluateAction from "../redux/action/evaluateAction";
+import originalInputAction from "../redux/action/originalinputAction";
 
 
    
-const CaculatorComponent=( {handleAcClick,handleAssignmentClick,handleNumberClick,handleEqualClick,input,evaluated})=>{
-console.log('component',input);
+const CaculatorComponent=( {handleAcClick,handleAssignmentClick,handleNumberClick,handleEqualClick,evaluated,originalInput})=>{
+
      return(
     <CalculatorUi
     handleAcClick={handleAcClick}
     handleAssignmentClick={handleAssignmentClick}
     handleNumberClick={handleNumberClick}
     handleEqualClick={handleEqualClick}
-    input={input}
+    
     evaluated={evaluated}
+    originalInput={originalInput}
     
     
     />
@@ -25,8 +26,9 @@ console.log('component',input);
   const mapStateToProps=(state)=>(
      {
 
-     input:state.inputReducer.input,
-     evaluated:state.inputReducer.evaluated
+     
+     evaluated:state.inputReducer.evaluated,
+     originalInput:state.inputReducer.originalInput
      
      }
   )
@@ -36,14 +38,18 @@ console.log('component',input);
           handleAcClick:(data)=>{
               dispatch(clearAction(data)) 
           },
-          handleAssignmentClick:(data)=>{
-               dispatch(inputAction(data))
+          handleAssignmentClick:(data)=>{ 
+          
+               dispatch(originalInputAction(data))
           },
+
           handleEqualClick:(data)=>{
                dispatch(evaluateAction(data))
           },
           handleNumberClick:(data)=>{
-               dispatch(inputAction(data))
+          
+               dispatch(originalInputAction(data))
+
           }
      }
        

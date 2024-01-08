@@ -1,74 +1,67 @@
 
-import { EVALUATE, INPUT } from "../action/action.type"
+
+
+
 import { CLEAR } from "../action/action.type";
+import { ORIGINALINPUT,EVALUATE } from "../action/action.type";
 
  const  defaultState={
-    input:[],
+    filterd:[],
+    originalInput: [],
     evaluated:''
  }
 
-
+   
 const inputReducer=( state=defaultState,action)=>{
 
     switch(action.type){
-        
-        case INPUT:
-            let newInput = [...state.input];
-           
-            if (action.payload === '*' || action.payload === '/') {
-              const lastChar = newInput.length > 0 ? newInput[newInput.length - 1] : '';
-              if((action.payload==='*'||action.payload==='/')&&(newInput[newInput.length - 1]==='-'||newInput[newInput.length - 1]==='+')
-              
-              &&(newInput[newInput.length - 2]==='/'||newInput[newInput.length - 2]==='*')
-              ){
-                 return {...state}
-              }
-              if(action.payload==='*'&& newInput[newInput.length-1]==='/'){
-                newInput[newInput.length - 1] = action.payload;
-                
-              }
-              if(action.payload==='/'&& newInput[newInput.length-1]==='*'){
-                newInput[newInput.length - 1] = action.payload;
-            } 
-          
-              if (lastChar !== '+' && lastChar !== '-' && lastChar !== '*' && lastChar !== '/') {
-              
-                newInput.push(action.payload);
-              } else if (lastChar === '+' || lastChar === '-') {
-                
-                newInput[newInput.length - 1] = action.payload;
-              }
-            } else if (action.payload === '+' || action.payload === '-') {
-              if (
-                newInput.length > 0 &&
-                (newInput[newInput.length - 1] === '+' || newInput[newInput.length - 1] === '-')
-              ) {
-                newInput.pop(); 
-              }
-              newInput.push(action.payload);
 
-            }
-            else if(action.payload==='.'){
-              newInput.push(action.payload)
-            }
-            
-            else if (!isNaN(action.payload)) {
-              newInput.push(action.payload); 
+      case ORIGINALINPUT:
+        let newInputValue = [...state.originalInput];
+         if(action.payload===0){
+          if(newInputValue.length===1 && newInputValue[newInputValue.length-1]===0){
+            newInputValue= [action.payload]
+          
+          }
+          else{
+            newInputValue.push(action.payload)
             }
           
-            return {
-              ...state,
-              input: newInput
-            };
+         }
+         else if(action.payload==='.'){
+           
+            let splited=newInputValue.join().split(/[+*\-/]/)
+          if(splited[splited.length-1].includes(action.payload)){
+            return{...state}
+          }
+          else{
+            newInputValue.push(action.payload);
+          }
+          
+        }
+         else{
+          newInputValue.push(action.payload);    
+         }
+         return{
+           ...state,originalInput:newInputValue,
+
+           
+         }
+           
           
         case CLEAR:
              return{
-                ...state,input:action.payload,evaluated:''
+                ...state,
+                input:action.payload ,
+                 originalInput:action.payload,
+                 evaluated:action.payload
              }
          case EVALUATE:
-            if(typeof(state.input[state.input.length-1])==='number'){
+            if(typeof(state.originalInput[state.originalInput.length-1])==='number'){
              return {
-                ...state,evaluated:[eval(action.payload)]
+                ...state,evaluated:[eval(action.payload)],
+                originalInput:[eval(action.payload)]
+                  
                } 
             };
           

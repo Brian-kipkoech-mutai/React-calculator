@@ -28,14 +28,14 @@
    font-family: 'Quicksand', sans-serif;
  }
 
- .displayDiv{
+ .displayy{
    margin: 10px;
        display:flex;
        flex-direction: column;
        
        justify-content: space-between;
  }
- .display{
+    .displayBox{
     height: 80px;
     width: 100%;
     background-color:black;
@@ -102,18 +102,18 @@
     
     display:  flex;
     
-    background-color:red;
+    background-color:black;
     height: 70px;
  }
  .mainDiv3{
     
     display:  flex;
-    background-color: yellow;
+    background-color: black;
     height: 70px;
  }
  .mainDiv4{
     
     display:  flex;
-    background-color: greenyellow;
+    background-color: black;
     height: 140px;
  }
