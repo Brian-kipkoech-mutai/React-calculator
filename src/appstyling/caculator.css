@@ -11,6 +11,8 @@
    width: 100svw;
    height: 100svh;
    background-color: rgb(245, 245, 245);
+   
+  gap: 0;
 
  }
  
@@ -47,7 +49,7 @@
    margin: 10px;
        display:flex;
        flex-direction: column;
-       
+         
        justify-content: space-between;
         
  }
@@ -70,9 +72,10 @@
  font-size: 1.5em;
  display: grid;
  grid-template-columns: repeat(4, 1fr);
- grid-template-rows: repeat(5,  minmax(2em, 4em));
+ grid-template-rows: repeat(5,  minmax(2em , 5em));
  gap: 0.3em;
  border-radius: 2em;
+ height: 100%;
 }
   
 .buttons-view :nth-child(n){
@@ -119,3 +122,13 @@ grid-column: 1/3;
   background-color:  #d5d6dd !important
 } 
   
+@media only screen and (min-width:768px){
+   .buttons-view{
+ 
+ 
+       
+      grid-template-rows: repeat(5,  minmax(2em , 3em));
+      
+     }
+
+}
