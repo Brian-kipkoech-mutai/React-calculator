@@ -8,6 +8,8 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
+   height: 100svh;
+   background-color: rgb(238, 238, 238);
  }
  
  .title{
@@ -16,13 +18,7 @@
  }
  .outerDiv{
     
-    width: 300px;
-    height: 441px;
-    display:  flex;
-    flex-direction: column;
-    
     flex-grow: 1;
-    
     
     
  }
@@ -35,7 +31,7 @@
    display: flex;
    justify-content: flex-end;
    font-size: 20px;
-   font-family: 'Orbitron', sans-serif;
+    
    font-family: 'Quicksand', sans-serif;
    color: #d1d9e6;
  }
@@ -46,6 +42,7 @@
        flex-direction: column;
        
        justify-content: space-between;
+        
  }
     .displayBox{
     height: 80px;
@@ -55,6 +52,7 @@
     justify-content:flex-end;
     margin-bottom: 0.3em;
     border-radius: 1em;
+    
  }
  .buttons-view{
    margin: 0 auto;
