@@ -1,6 +1,13 @@
  body{
    font-size: 16px;
    box-sizing: border-box;
+    
+ }
+ .app{
+    
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
  }
  
  .title{
@@ -13,6 +20,9 @@
     height: 441px;
     display:  flex;
     flex-direction: column;
+    
+    flex-grow: 1;
+    
     
     
  }
